@@ -18,3 +18,10 @@ db.caronas.find({rating: {$gte:4.0}}, {name: 1})
 
 //Mostra os 5 motoristas com a melhor nota
 db.caronas.find().sort({"rating":-1}).limit(5)
+
+// Mostra a média de nota dos motoristas homens e mulheres
+db.caronas.aggregate([
+  { $match: { cars: {$exists:true} } },
+  { $group: { _id: "$sex", total: { $max: "$age" } } },
+  { $sort: { total: -1 } }
+])
