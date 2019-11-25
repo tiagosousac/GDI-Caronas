@@ -15,3 +15,6 @@ db.caronas.aggregate([
 
 //Mostra apenas o nome de todos os motoristas com nota acima ou igual a 4.0
 db.caronas.find({rating: {$gte:4.0}}, {name: 1})
+
+//Mostra os 5 motoristas com a melhor nota
+db.caronas.find().sort({"rating":-1}).limit(5)
