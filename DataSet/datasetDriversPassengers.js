@@ -3,7 +3,7 @@
 
 db = db.getSiblingDB("caronas");
 db.caronas.drop();
-db.reviews.insertMany([
+db.caronas.insertMany([
   
   
 {
