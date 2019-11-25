@@ -25,3 +25,6 @@ db.caronas.aggregate([
   { $group: { _id: "$sex", total: { $max: "$age" } } },
   { $sort: { total: -1 } }
 ])
+
+// Encontra motoristas com nota 5.0
+db.caronas.find( {$where: function() {return ((this.rating) == "5.0")} } )
