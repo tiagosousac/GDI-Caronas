@@ -1,0 +1,16 @@
+{
+  "name": "",
+  "age": 0,
+  "sex": "",
+  "contactNumber": "",
+  "rating": 0,
+  "value": 0,
+  "cars": [
+    {
+      "model": "",
+      "year": 0,
+      "color": "",
+      "licensePlate": ""
+    }
+  ]
+}

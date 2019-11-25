@@ -1,0 +1,22 @@
+{
+  "name": "Thiago S",
+  "age": 23,
+  "sex": "Male",
+  "contactNumber": "+558199872-6658",
+  "rating": 3.8,
+  "paymentOptions": [
+    {
+      "type":"CC",
+      "number":"1234-1234-1234-1234",
+      "securityCode": "123"
+    },
+    {
+      "type":"DC",
+      "number":"1234-1234-1234-1234",
+      "securityCode":"321"
+    },
+    {
+      "type":"Cash"
+    }
+]
+}
