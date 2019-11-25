@@ -223,7 +223,7 @@ db.caronas.insertMany([
 
 
 db = db.getSiblingDB("caronas");
-db.caronas.drop();
+//db.caronas.drop();
 db.reviews.insertMany([
 
 {
