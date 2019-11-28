@@ -43,3 +43,6 @@ db.caronas.findOne({rating:4.6})
 
 // Exibe a quantidade de carros por gênero
 db.caronas.aggregate([{$group:{_id: "$sex", quantidadeCarros:{$sum:{$size: "$cars" }}}},{$sort:{"quantidadeCarros":-1}}])
+
+// Exibe apenas os clientes com cartões de débito e crédito
+db.usuarios.find({ "paymentOptions.type": { $all: ["CC", "DC"]}}).pretty()
