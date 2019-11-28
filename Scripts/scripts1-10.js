@@ -19,7 +19,7 @@ db.caronas.find({rating: {$gte:4.0}}, {name: 1})
 //Mostra os 5 motoristas com a melhor nota
 db.caronas.find().sort({"rating":-1}).limit(5)
 
-// Mostra a média de nota dos motoristas homens e mulheres
+// Mostra a maior idade dos motoristas homens e mulheres
 db.caronas.aggregate([
   { $match: { cars: {$exists:true} } },
   { $group: { _id: "$sex", total: { $max: "$age" } } },
@@ -31,3 +31,6 @@ db.caronas.find( {$where: function() {return ((this.rating) == "5.0")} } )
 
 // Muda o nome da coleção "reviews" para "usarios"
 db.reviews.renameCollection("usuarios")
+
+// Exibe as motoristas mulheres ou motoristas com rating maior que 4
+db.caronas.find({$expr: {$cond: {if: {$or: [{$eq: ["$sex", "Woman"]},{$gte:["$rating", 4]}]},then: {sex: "Woman"}, else: null}}}).pretty()
