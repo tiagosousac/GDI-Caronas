@@ -68,3 +68,7 @@ db.caronas.update( {name: "Vinicius Vilela"},
     }
   }
 })
+
+// Utilizando o $text, precisei criar um index
+db.caronas.createIndex({name: "text"})
+db.caronas.find({$text: {$search: "Vinicius"}})
