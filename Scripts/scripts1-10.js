@@ -55,5 +55,15 @@ db.caronas.save({
   contactNumber: "+55 81 99634-9609",
   rating: 2.7,
   value: 7,
-  car: [{model:"Fusca", year:1955, color:"Rosa", licensePlate: "AAA0404"}]
+  cars: [{model:"Fusca", year:1955, color:"Rosa", licensePlate: "AAA0404"}]
+})
+
+db.caronas.update( {name: "Vinicius Vilela"},
+  {$addToSet: { 
+    cars:{ 
+      $each:
+      [{model:"Ford KA", year:2018, color: "Verde", licensePlate: "BBB0202"},
+        {model:"Renault Logan", year:2016, color:"Azul", licensePlate: "CCC0101"}]
+    }
+  }
 })
