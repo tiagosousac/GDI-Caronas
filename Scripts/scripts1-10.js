@@ -28,3 +28,6 @@ db.caronas.aggregate([
 
 // Encontra motoristas com nota 5.0
 db.caronas.find( {$where: function() {return ((this.rating) == "5.0")} } )
+
+// Muda o nome da coleção "reviews" para "usarios"
+db.reviews.renameCollection("usuarios")
