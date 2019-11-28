@@ -58,6 +58,7 @@ db.caronas.save({
   cars: [{model:"Fusca", year:1955, color:"Rosa", licensePlate: "AAA0404"}]
 })
 
+// Utilizando addToSet
 db.caronas.update( {name: "Vinicius Vilela"},
   {$addToSet: { 
     cars:{ 
