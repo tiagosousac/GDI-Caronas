@@ -37,3 +37,6 @@ db.caronas.find({$expr: {$cond: {if: {$or: [{$eq: ["$sex", "Woman"]},{$gte:["$ra
 
 // Utilizando o update
 db.caronas.update({name: "Hugo Falcao"}, {$set: {age: 21}})
+
+// Utilizando findOne para encontrar algum motorista com avaliação 4.6
+db.caronas.findOne({rating:4.6})
