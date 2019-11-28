@@ -29,8 +29,11 @@ db.caronas.aggregate([
 // Encontra motoristas com nota 5.0
 db.caronas.find( {$where: function() {return ((this.rating) == "5.0")} } )
 
-// Muda o nome da coleção "reviews" para "usarios"
-db.reviews.renameCollection("usuarios")
+// Muda o nome da coleção "reviews" para "usuarios"
+db.reviews.renameCollection("usuarios", true)
 
 // Exibe as motoristas mulheres ou motoristas com rating maior que 4
 db.caronas.find({$expr: {$cond: {if: {$or: [{$eq: ["$sex", "Woman"]},{$gte:["$rating", 4]}]},then: {sex: "Woman"}, else: null}}}).pretty()
+
+// Utilizando o update
+db.caronas.update({name: "Hugo Falcao"}, {$set: {age: 21}})
