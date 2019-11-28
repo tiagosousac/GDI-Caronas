@@ -40,3 +40,6 @@ db.caronas.update({name: "Hugo Falcao"}, {$set: {age: 21}})
 
 // Utilizando findOne para encontrar algum motorista com avaliação 4.6
 db.caronas.findOne({rating:4.6})
+
+// Exibe a quantidade de carros por gênero
+db.caronas.aggregate([{$group:{_id: "$sex", quantidadeCarros:{$sum:{$size: "$cars" }}}},{$sort:{"quantidadeCarros":-1}}])
