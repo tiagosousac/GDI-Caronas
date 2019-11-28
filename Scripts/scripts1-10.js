@@ -46,3 +46,14 @@ db.caronas.aggregate([{$group:{_id: "$sex", quantidadeCarros:{$sum:{$size: "$car
 
 // Exibe apenas os clientes com cartões de débito e crédito
 db.usuarios.find({ "paymentOptions.type": { $all: ["CC", "DC"]}}).pretty()
+
+// Utilizando Save
+db.caronas.save({
+  name: "Vinicius Vilela",
+  age: 23,
+  sex: "Man",
+  contactNumber: "+55 81 99634-9609",
+  rating: 2.7,
+  value: 7,
+  car: [{model:"Fusca", year:1955, color:"Rosa", licensePlate: "AAA0404"}]
+})
