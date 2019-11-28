@@ -60,8 +60,8 @@ db.caronas.save({
 
 // Utilizando addToSet
 db.caronas.update( {name: "Vinicius Vilela"},
-  {$addToSet: { 
-    cars:{ 
+  {$addToSet: {
+    cars:{
       $each:
       [{model:"Ford KA", year:2018, color: "Verde", licensePlate: "BBB0202"},
         {model:"Renault Logan", year:2016, color:"Azul", licensePlate: "CCC0101"}]
@@ -72,3 +72,14 @@ db.caronas.update( {name: "Vinicius Vilela"},
 // Utilizando o text, precisei criar um index
 db.caronas.createIndex({name: "text"})
 db.caronas.find({$text: {$search: "Vinicius"}})
+
+// mapeia motoristas pela classificação considerando apenas o sexo feminino
+function map() {
+  emit (this.rating, this.name);
+}
+
+function reduce(key, motoristas) {
+  return motoristas.join();
+}
+
+db.caronas.mapReduce(map,reduce, {out: "mapeamento",  query: {sex: "Woman"}})
