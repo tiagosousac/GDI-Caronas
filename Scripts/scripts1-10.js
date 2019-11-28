@@ -83,3 +83,34 @@ function reduce(key, motoristas) {
 }
 
 db.caronas.mapReduce(map,reduce, {out: "mapeamento",  query: {sex: "Woman"}})
+
+//filtra os carros com anos acima de 2019
+
+
+db.caronas.aggregate([
+  {
+     $project: {
+        cars: {
+           $filter: {
+              input: "$cars",
+              as: "cars",
+              cond: { $gte: [ "$$cars.year", 2019 ] }
+           }
+        }
+     }
+  }
+])
+
+//Retorna um ou mais motorista com a mesma nota do passageiro
+
+db.reviews.aggregate([
+  {
+    $lookup:
+      {
+        from: "caronas",
+        localField: "rating",
+        foreignField: "rating",
+        as: "caronas_docs"
+      }
+ }
+])
